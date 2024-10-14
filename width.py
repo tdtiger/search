@@ -38,25 +38,39 @@ movey = [1, 0, -1, 0]
 for i in range(height):
     tmp = input().split()
     for j in range(width):
-        if tmp[j] == '#':
-            wi.append('#')
-            continue
-        elif tmp[j] == 's':
+        if tmp[j] == 's':
             start = (i, j)
-            wi.append(0)
-            continue
         elif tmp[j] == 'g':
             goal = (i, j)
 
-        wi.append('.')
+        wi.append(tmp[j])
+    # 行の情報を保存
     me.append(wi)
+
+    # 行の情報を初期化
     wi = []
 
-for i in range(len(me)):
-    print(me[i])
+# 迷路を確認
+print()
+for i in range(height):
+    for j in range(width):
+        if me[i][j] == '#':
+            print("# ", end = "")
+        elif (i, j) == start:
+            print("s ", end = "")
+        elif (i, j) == goal:
+            print("g ", end = "")
+        else:
+            print(". ", end = "")
+    print()
+print()
+
 #オープンリスト
 q = deque()
 q.append(start)
+
+me[start[0]][start[1]] = 0
+me[goal[0]][goal[1]] = '.'
 
 # オープンリストが空になるまでループ
 # あまりにも大きい迷路だと時間がかかりすぎると思うので，ループカウンタを設けて上限回数を設定したほうがいいかもしれない
@@ -75,3 +89,14 @@ if me[goal[0]][goal[1]] == '.':
     print("Fail")
 else:
     print(me[goal[0]][goal[1]])
+
+# 迷路を確認
+# そのマスまで移動するのにかかる手数が表示
+print()
+for i in range(height):
+    for j in range(width):
+        if me[i][j] == '#':
+            print("# ", end = "")
+        else:
+            print(me[i][j], end = " ")
+    print()
