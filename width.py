@@ -39,7 +39,7 @@ height = int(height)
 
 # 迷路の読み込み
 print("迷路の情報を入力してください．")
-print("入力形式 : 道 -> .  壁 -> #")
+print("入力形式 : スタート -> s  道 -> .  壁 -> #  ゴール -> g")
 print()
 for i in range(height):
     print(f"{i + 1}行目")
