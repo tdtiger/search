@@ -23,10 +23,6 @@ me = []
 # 行の長さ
 wi = []
 
-width, height = input().split()
-width = int(width)
-height = int(height)
-
 start = (0, 0)
 goal = (0, 0)
 
@@ -34,8 +30,19 @@ goal = (0, 0)
 movex = [0, -1, 0, 1]
 movey = [1, 0, -1, 0]
 
+# 迷路の列数，行数を読み込み
+print("迷路の列数，行数を入力してください．")
+print("入力形式 : 列数 (空白) 行数")
+width, height = input().split()
+width = int(width)
+height = int(height)
+
 # 迷路の読み込み
+print("迷路の情報を入力してください．")
+print("入力形式 : 道 -> .  壁 -> #")
+print()
 for i in range(height):
+    print(f"{i + 1}行目")
     tmp = input().split()
     for j in range(width):
         if tmp[j] == 's':
@@ -52,6 +59,7 @@ for i in range(height):
 
 # 迷路を確認
 print()
+print("入力された迷路")
 for i in range(height):
     for j in range(width):
         if me[i][j] == '#':
@@ -88,11 +96,12 @@ while q:
 if me[goal[0]][goal[1]] == '.':
     print("Fail")
 else:
-    print(me[goal[0]][goal[1]])
+    print(f"最短手数:{me[goal[0]][goal[1]]}")
 
 # 迷路を確認
 # そのマスまで移動するのにかかる手数が表示
 print()
+print("探索後の迷路")
 for i in range(height):
     for j in range(width):
         if me[i][j] == '#':
