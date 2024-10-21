@@ -14,7 +14,7 @@
 # . . . # g
 # . # . . .
 #
-# 出力： 最短手数:8
+# 出力： 手数:8
 
 from collections import deque
 
@@ -103,7 +103,7 @@ while q:
 if me[goal[0]][goal[1]] == '.':
     print("Fail")
 else:
-    print(f"最短手数:{me[goal[0]][goal[1]]}")
+    print(f"手数:{me[goal[0]][goal[1]]}")
 
 # 迷路を確認
 # そのマスまで移動するのにかかる手数が表示
