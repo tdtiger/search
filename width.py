@@ -95,7 +95,14 @@ while q:
         if 0 <= ny < height and 0 <= nx < width and me[ny][nx] != '#':
             if me[ny][nx] == '.':
                 me[ny][nx] = me[y][x] + 1
+
+                if (ny, nx) == goal:
+                    break
+
                 q.append((ny, nx))
+    if (ny, nx) == goal:
+        print("search success!")
+        break
 
 # ゴールの値が"."のままだったら，到達できていないため失敗
 if me[goal[0]][goal[1]] == '.':
